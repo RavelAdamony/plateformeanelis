@@ -1,0 +1,73 @@
+{% extends "::application.html.twig" %} 
+
+{% block title %}Nouvelle cotisation{% endblock %}
+{% block body %}
+
+    <div id="page-content">
+      <div id='wrap'>
+        <div id="page-heading">
+          <ol class="breadcrumb">
+            <li><a href="{{ path('application_main_homepage') }}">Plateforme</a></li>
+            <li><a href="{{ path('application_cotisation_homepage') }}" title="Cotisation">Cotisations</a></li>
+            <li class="active">Nouvelle cotisation</li>
+        </ol>
+        <h1>Nouvelle cotisation</h1>
+    </div>
+    <div class="container">
+
+        <div class="panel panel-midnightblue">
+            <div class="panel-heading">
+              <h4>Nouvelle cotisation</h4>
+          </div>
+          <div class="panel-body collapse in">
+            <p class="text-info">Il existe deux types de cotisation : <strong>Membre (10 &euro;)</strong> et <strong>Membre Bienfaisant (montant libre)</strong>.<br />L'argent récolté nous permet de faire <strong>vivre l'association</strong> et d'<strong>organiser des événements</strong> comme les récrées ANELIS.</p>
+            <div class="form-horizontal">
+              {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.typeCotisation, "Type*", { 'label_attr' : { 'class' : 'col-sm-3 control-label' } }) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.typeCotisation, { 'attr' : { 'class' : 'form-control' } }) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.year, "Année*", { 'label_attr' : { 'class' : 'col-sm-3 control-label' } }) }}
+                    <div class="col-sm-6">
+                        {{ form_widget(form.year, { 'attr' : { 'class' : 'form-control' } }) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_errors(form) }}
+                    {{ form_rest(form) }}
+
+                </div>
+
+                  </div>
+                <p class="text-warning">Une fois votre demande de cotisation effectuée, il suffit de visualiser la facture générée et de la payer pour que celle-ci soit prise en compte.</p>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="text-center">
+                            <div class="btn-toolbar">
+                                <button class="btn-primary btn">Cotiser</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              {{ form_end(form) }}
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!--wrap -->
+</div>
+<!-- page-content -->
+<script>
+        global = {
+            locale   : '{{ app.request.locale }}'
+        }
+</script>
+
+
+{% endblock %}

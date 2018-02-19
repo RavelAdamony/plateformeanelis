@@ -1,0 +1,132 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href='{{ asset('assets/demo/variations/default.css') }}' rel='stylesheet' type='text/css' media='all' id='styleswitcher'> 
+    <link href='{{ asset('assets/demo/variations/default.css') }}' rel='stylesheet' type='text/css' media='all' id='headerswitcher'> 
+    
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="{{ asset('assets/css/ie8.css') }}">
+        <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+        <script type="text/javascript" src="{{ asset('assets/plugins/charts-flot/excanvas.min.js') }}"></script>
+    <![endif]-->
+
+
+    <link rel='stylesheet' type='text/css' href='{{ asset('assets/plugins/codeprettifier/prettify.css') }}' /> 
+    <link rel='stylesheet' type='text/css' href='{{ asset('assets/plugins/form-toggle/toggles.css') }}' /> 
+    <link rel='stylesheet' type='text/css' href='{{ asset('assets/fonts/glyphicons/css/glyphicons.min.css') }}' /> 
+    <script src='{{ asset('assets/js/jquery-1.11.1.min.js')}}'></script>
+
+{% endblock %}
+
+{% block content %}
+
+    <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+        <a id="leftmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="right" title="Agrandir/Réduire le menu"></a>
+
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand" href="{{ path('application_main_homepage') }}">ANELIS</a>
+        </div>
+
+        <ul class="nav navbar-nav pull-right toolbar">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle username" data-toggle="dropdown"><span class="hidden-xs">{{ app.user.surname }} {{ app.user.name }}<i class="fa fa-caret-down"></i></span>
+                {% if app.user.avatar.extension is empty %}
+                                <img src="{{ asset(app.user.avatar.defaultWebPath) }}" alt="{{ app.user.username }}" style="width: auto;" />
+                            {% else %}
+                                <img src="{{ asset(app.user.avatar.webPath) }}" alt="{{ app.user.username }}" style="width: auto;" />
+                            {% endif %}
+                </a>
+                <ul class="dropdown-menu userinfo arrow">
+                    <li class="username">
+                        <a href="{{ path('user_show_profile', { 'id' : app.user.id }) }}">
+                            <div class="pull-left">
+                            {% if app.user.avatar.extension is empty %}
+                                <img src="{{ asset(app.user.avatar.defaultWebPath) }}" alt="{{ app.user.username }}" />
+                            {% else %}
+                                <img src="{{ asset(app.user.avatar.webPath) }}" alt="{{ app.user.username }}" />
+                            {% endif %}
+                            </div>
+                            <div class="pull-right"><h5>Salut {{ app.user.surname }} !</h5></div>
+                        </a>
+                    </li>
+                    <li class="userlinks">
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('user_edit_profile', { 'id' : app.user.id }) }}">Mon Compte <i class="pull-right fa fa-pencil"></i></a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}">Changer Mot de passe <i class="pull-right fa fa-exchange"></i></a></li>
+                            <li><a href="{{ path('application_main_help') }}">Aide <i class="pull-right fa fa-question-circle"></i></a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}" class="text-right">Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+
+    <div id="page-container">
+        <nav id="page-leftbar" role="navigation">
+            <ul class="acc-menu" id="sidebar">
+                <!--
+                <li id="search">
+                    <a href="javascript:;"><i class="fa fa-search opacity-control"></i></a>
+                     <form>
+                        <input type="text" class="search-query" placeholder="Rechercher ...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+                -->
+                <li class="divider"></li>
+                <li><a href="{{ path('application_main_homepage') }}"><i class="fa fa-home"></i> <span>Accueil</span></a></li>
+                <li><a href="{{ path('application_annuaire_homepage') }}"><i class="glyphicon glyphicon-search"></i> <span>Annuaire</span></a></li>
+                {#
+                <li><a href="{{ path('offre_homepage') }}"><i class="glyphicon glyphicon-bullhorn"></i> <span>Partage d'annonces</span></a></li>
+                #}
+                <li><a href="{{ path('application_chat_homepage') }}"><i class="glyphicon glyphicon-heart"></i> <span>ZZ Chat</span></a></li>
+                <li class="divider"></li>
+                <li><a href="{{ path('application_cotisation_homepage') }}"><i class="fa fa-thumbs-o-up"></i> <span>Mes Cotisations</span></a></li>
+                <li><a href="{{ path('application_career_homepage') }}"><i class="fa fa-list"></i> <span>Mes Parcours</span></a></li>
+                {% if is_yearbook_activated() == true %}
+                {{ render(controller( 'ApplicationYearbookBundle:Default:yearbookMenu', { 'userId': app.user.id } )) }}
+                {% endif %}
+
+                <!--
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-map-marker"></i> <span>Carte des ZZs</span></a></li>
+                <li><a href="#"><i class="fa fa-camera"></i> <span> Galerie Photo</span> </a></li>
+                -->
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="divider"></li>
+                <li><a href="{{ path('sonata_admin_dashboard')}}" target="_blank"><i class="fa fa-briefcase"></i> <span>Administration</span></a></li>
+                {% endif %}
+
+            </ul>
+        </nav>
+
+{% block body %} {% endblock %}
+    
+<footer role="contentinfo">
+        <div class="clearfix">
+            <ul class="list-unstyled list-inline pull-left">
+                <li>ANELIS &copy; {{ "now"|date("Y") }}</li>
+            </ul>
+            <button class="pull-right btn btn-inverse-alt btn-xs hidden-print" id="back-to-top"><i class="fa fa-arrow-up"></i></button>
+        </div>
+    </footer>
+
+</div> 
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script type='text/javascript' src='{{ asset('assets/js/jquery-1.10.2.min.js') }}'></script>
+<script type='text/javascript' src='{{ asset('assets/js/bootstrap.min.js') }}'></script> 
+<script type='text/javascript' src='{{ asset('assets/js/enquire.js') }}'></script> 
+<script type='text/javascript' src='{{ asset('assets/js/jquery.cookie.js') }}'></script> 
+<script type='text/javascript' src='{{ asset('assets/js/jquery.nicescroll.min.js') }}'></script> 
+<script type='text/javascript' src='{{ asset('assets/js/application.js') }}'></script> 
+{% endblock %}

@@ -1,0 +1,29 @@
+services:
+    application_cotisation.admin.year_cotisation:
+        class: Application\CotisationBundle\Admin\YearCotisationAdmin
+        arguments: [~, Application\CotisationBundle\Entity\YearCotisation, ApplicationCotisationBundle:YearCotisationAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Cotisation", label: "Années de Cotisation" }
+
+    sonata.admin.cotisation:
+        class: Application\CotisationBundle\Admin\CotisationAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Cotisation", label: "Cotisations" }
+        arguments:
+            - ~
+            - Application\CotisationBundle\Entity\Cotisation
+            - ~
+        calls:
+            - [ setTranslationDomain, [ApplicationCotisationBundle]]
+
+    nouvelle.cotisation:
+        class: Application\CotisationBundle\Listener\CotisListener
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+
+    update.user:
+        class: Application\CotisationBundle\Listener\CotisListener
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
+
+

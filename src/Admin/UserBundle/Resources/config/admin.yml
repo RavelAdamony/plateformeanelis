@@ -1,0 +1,28 @@
+services:
+    sonata.admin.user:
+        class: Admin\UserBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Gestion des Membres", label: "Utilisateurs" }
+        arguments:
+            - ~
+            - Admin\UserBundle\Entity\User
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminUserBundle]]
+    admin_user.admin.parameters:
+        class: Admin\UserBundle\Admin\ParametersAdmin
+        arguments: [~, Admin\UserBundle\Entity\Parameters, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Gestion du Contenu", label: "Parametres de l'application"}
+
+    admin_user.admin.events:
+        class: Admin\UserBundle\Admin\EventsAdmin
+        arguments: [~, Admin\UserBundle\Entity\Events, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Gestion du Contenu", label: "Evènements"}
+    admin_user.admin.newsletter:
+        class: Admin\UserBundle\Admin\NewsletterAdmin
+        arguments: [~, Admin\UserBundle\Entity\Newsletter, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: "Gestion des newsletters", label: "newsletter"}
+

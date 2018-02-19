@@ -1,0 +1,39 @@
+offre:
+    resource: "@OffreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+application_yearbook:
+    resource: "@ApplicationYearbookBundle/Resources/config/routing.yml"
+    prefix:   /
+
+application_career:
+    resource: "@ApplicationCareerBundle/Resources/config/routing.yml"
+    prefix:   /
+
+application_chat:
+    resource: "@ApplicationChatBundle/Resources/config/routing.yml"
+    prefix:   /
+
+application_cotisation:
+    resource: "@ApplicationCotisationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+application_annuaire:
+    resource: "@ApplicationAnnuaireBundle/Resources/config/routing.yml"
+    prefix:   /
+
+application_main:
+    resource: "@ApplicationMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user_budle:
+    resource: "@AdminUserBundle/Resources/config/routing.yml"
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

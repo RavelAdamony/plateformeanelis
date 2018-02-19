@@ -1,0 +1,25 @@
+parameters:
+#    admin_user.example.class: Admin\UserBundle\Example
+
+services:
+#    admin_user.example:
+#        class: %admin_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    admin.user.registration.form.type:
+        class: Admin\UserBundle\Form\RegistrationType
+        arguments: ["%fos_user.model.user.class%"]
+        tags:
+            - { name: form.type, alias: admin_user_registration }
+
+    anelis_user.change_password.form.type:
+        class: Admin\UserBundle\Form\ChangePasswordFormType
+        arguments: ["%fos_user.model.user.class%"]
+        tags:
+            - { name: form.type, alias: anelis_user_change_password }
+
+    anelis_user.form.type.tel:
+        class: Admin\UserBundle\Form\TelType
+        tags:
+            - { name: form.type, alias: tel }
+

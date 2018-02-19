@@ -1,0 +1,31 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+    {% block title %}Mot de passe oublié{% endblock %}
+
+        {% block optbody %}
+            class="focusedform"
+        {% endblock %}
+
+        {% block content %}
+            <div class="verticalcenter">
+                <a href="{{ path('application_main_homepage') }}"><img src="{{ asset('assets/img/anelis-logo.png') }}" alt="Logo" class="brand" /></a>
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <h4 class="text-center" style="margin-bottom: 25px;">Mot de passe oublié</h4>
+                            <div class="text-center"><span class="alert-info">Un e-mail vous a été envoyé. Il contient un lien sur lequel il vous faudra cliquer afin de réinitialiser votre mot de passe.</span></div>
+
+                            <div class="text-center">Vous ne recevez pas de mail ? <a href="mailto:support@anelis.org">Contactez-nous</a> </div>
+
+                    </div>
+                    <div class="panel-footer">
+                        <div class="pull-left">
+                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Retour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endblock %}

@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: pan-v7
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: in-v3.mailjet.com
+    mailer_user: 98faefd747741f21d9ff15d19fd8352a
+    mailer_password: 9bd462e311af83a3be4ff1a8c214f907
+    locale: fr
+    secret: '-729fkx[:`[@_2M|NH2MGRV-{6vh+tC`UAa(8pXXG1kQ}i;82m/E[Z:s|Z/)jJ5>'

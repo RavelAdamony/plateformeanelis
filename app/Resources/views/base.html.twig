@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %} - Plateforme ANELIS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Plateforme ANELIS">
+        <meta name="author" content="David Santiago">
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
+
+        <link href="{{ asset('assets/less/styles.less') }}" rel="stylesheet/less" media="all"> 
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+
+
+        {% block stylesheets %}{% endblock %}
+
+        <script type="text/javascript" src="{{ asset('assets/js/less.js') }}"></script>
+    </head>
+    <body{% block optbody %}{% endblock %}>
+        {% block content %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-59532264-1', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+    </body>
+</html>
