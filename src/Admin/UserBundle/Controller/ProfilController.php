@@ -65,7 +65,6 @@ class ProfilController extends Controller
             $this->get('session')->getFlashBag()->add('success', "L'utilisateur a été modifié.");
 
         }
-        $listnewsletter = $em->getRepository("AdminUserBundle:Newsletter")->findall();
 
         return $this->render('AdminUserBundle:Profile:user.edit.html.twig', array(
                 "form" => $form->createView(),

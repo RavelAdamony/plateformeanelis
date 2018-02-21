@@ -20,29 +20,29 @@ class __TwigTemplate_6fd20d19a002fe00807d547956461fde6d94fff317c8bc3356d5cc7b2b1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5dd39eabc01f2de35f0e0f96cf1e7e83027484c11c3fc8d4d1fb87378ab92439 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_5dd39eabc01f2de35f0e0f96cf1e7e83027484c11c3fc8d4d1fb87378ab92439->enter($__internal_5dd39eabc01f2de35f0e0f96cf1e7e83027484c11c3fc8d4d1fb87378ab92439_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:Block:block_admin_list.html.twig"));
+        $__internal_1e0199d55b8bb9e7d6d46a7233c0be6137231081c73a6c6a26a8d1003dcbe278 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_1e0199d55b8bb9e7d6d46a7233c0be6137231081c73a6c6a26a8d1003dcbe278->enter($__internal_1e0199d55b8bb9e7d6d46a7233c0be6137231081c73a6c6a26a8d1003dcbe278_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:Block:block_admin_list.html.twig"));
 
-        $__internal_d88223358495b2c7e50ba0e8bab13b70fc47317b0454cf325b86b6f6349c3cbb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d88223358495b2c7e50ba0e8bab13b70fc47317b0454cf325b86b6f6349c3cbb->enter($__internal_d88223358495b2c7e50ba0e8bab13b70fc47317b0454cf325b86b6f6349c3cbb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:Block:block_admin_list.html.twig"));
+        $__internal_2e0c0c22684a11a36b14f3d056eaebe321753f6d8ae739f056710f8cf1c516ad = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_2e0c0c22684a11a36b14f3d056eaebe321753f6d8ae739f056710f8cf1c516ad->enter($__internal_2e0c0c22684a11a36b14f3d056eaebe321753f6d8ae739f056710f8cf1c516ad_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:Block:block_admin_list.html.twig"));
 
         $this->getParent($context)->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_5dd39eabc01f2de35f0e0f96cf1e7e83027484c11c3fc8d4d1fb87378ab92439->leave($__internal_5dd39eabc01f2de35f0e0f96cf1e7e83027484c11c3fc8d4d1fb87378ab92439_prof);
+        $__internal_1e0199d55b8bb9e7d6d46a7233c0be6137231081c73a6c6a26a8d1003dcbe278->leave($__internal_1e0199d55b8bb9e7d6d46a7233c0be6137231081c73a6c6a26a8d1003dcbe278_prof);
 
         
-        $__internal_d88223358495b2c7e50ba0e8bab13b70fc47317b0454cf325b86b6f6349c3cbb->leave($__internal_d88223358495b2c7e50ba0e8bab13b70fc47317b0454cf325b86b6f6349c3cbb_prof);
+        $__internal_2e0c0c22684a11a36b14f3d056eaebe321753f6d8ae739f056710f8cf1c516ad->leave($__internal_2e0c0c22684a11a36b14f3d056eaebe321753f6d8ae739f056710f8cf1c516ad_prof);
 
     }
 
     // line 14
     public function block_block($context, array $blocks = array())
     {
-        $__internal_823098f8285c7299dc3d35bffcfb620b0eda095a1501e62cd78e20117b8037b7 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_823098f8285c7299dc3d35bffcfb620b0eda095a1501e62cd78e20117b8037b7->enter($__internal_823098f8285c7299dc3d35bffcfb620b0eda095a1501e62cd78e20117b8037b7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "block"));
+        $__internal_9b120ab8bee7223a82c77fdb38051779c1965b77d2cb650c23a566b69102d54e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_9b120ab8bee7223a82c77fdb38051779c1965b77d2cb650c23a566b69102d54e->enter($__internal_9b120ab8bee7223a82c77fdb38051779c1965b77d2cb650c23a566b69102d54e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "block"));
 
-        $__internal_88bd2bb17b73c6ab665cdbdadb48565cdf4bca46446c4f6bd35c3c5a0a7c79b4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_88bd2bb17b73c6ab665cdbdadb48565cdf4bca46446c4f6bd35c3c5a0a7c79b4->enter($__internal_88bd2bb17b73c6ab665cdbdadb48565cdf4bca46446c4f6bd35c3c5a0a7c79b4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "block"));
+        $__internal_82a06b1df06fe451e12615fe47e473ca160cd7092d20af1b0766dd482ba9b443 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_82a06b1df06fe451e12615fe47e473ca160cd7092d20af1b0766dd482ba9b443->enter($__internal_82a06b1df06fe451e12615fe47e473ca160cd7092d20af1b0766dd482ba9b443_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "block"));
 
         // line 15
         echo "    ";
@@ -205,10 +205,10 @@ class __TwigTemplate_6fd20d19a002fe00807d547956461fde6d94fff317c8bc3356d5cc7b2b1
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['group'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_88bd2bb17b73c6ab665cdbdadb48565cdf4bca46446c4f6bd35c3c5a0a7c79b4->leave($__internal_88bd2bb17b73c6ab665cdbdadb48565cdf4bca46446c4f6bd35c3c5a0a7c79b4_prof);
+        $__internal_82a06b1df06fe451e12615fe47e473ca160cd7092d20af1b0766dd482ba9b443->leave($__internal_82a06b1df06fe451e12615fe47e473ca160cd7092d20af1b0766dd482ba9b443_prof);
 
         
-        $__internal_823098f8285c7299dc3d35bffcfb620b0eda095a1501e62cd78e20117b8037b7->leave($__internal_823098f8285c7299dc3d35bffcfb620b0eda095a1501e62cd78e20117b8037b7_prof);
+        $__internal_9b120ab8bee7223a82c77fdb38051779c1965b77d2cb650c23a566b69102d54e->leave($__internal_9b120ab8bee7223a82c77fdb38051779c1965b77d2cb650c23a566b69102d54e_prof);
 
     }
 
@@ -288,6 +288,6 @@ file that was distributed with this source code.
         {% endif %}
     {% endfor %}
 {% endblock %}
-", "SonataAdminBundle:Block:block_admin_list.html.twig", "C:\\wamp64\\www\\plateformeanelis\\vendor\\sonata-project\\admin-bundle/Resources/views/Block/block_admin_list.html.twig");
+", "SonataAdminBundle:Block:block_admin_list.html.twig", "C:\\wamp64\\www\\mailing\\plateformeanelis\\vendor\\sonata-project\\admin-bundle/Resources/views/Block/block_admin_list.html.twig");
     }
 }

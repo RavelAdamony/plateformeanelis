@@ -20,18 +20,18 @@ class __TwigTemplate_fdc7c0a6d92ceb1825db7732cee4ff38d12e20042bfd83ae2c7da5f4006
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_158f8be18c4eb83b49d5cd3862a427ba8b9aadbc0c23488d630b230a466363dc = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_158f8be18c4eb83b49d5cd3862a427ba8b9aadbc0c23488d630b230a466363dc->enter($__internal_158f8be18c4eb83b49d5cd3862a427ba8b9aadbc0c23488d630b230a466363dc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:list_inner_row.html.twig"));
+        $__internal_9537604381b9317f0f94c732bcefbe7f727392d3b42be9483431f429511fefd2 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_9537604381b9317f0f94c732bcefbe7f727392d3b42be9483431f429511fefd2->enter($__internal_9537604381b9317f0f94c732bcefbe7f727392d3b42be9483431f429511fefd2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:list_inner_row.html.twig"));
 
-        $__internal_44442b8ba60cafd53d992b54b74008c7fd2dbd801822617d5f7d506413e87209 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_44442b8ba60cafd53d992b54b74008c7fd2dbd801822617d5f7d506413e87209->enter($__internal_44442b8ba60cafd53d992b54b74008c7fd2dbd801822617d5f7d506413e87209_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:list_inner_row.html.twig"));
+        $__internal_ecb4407f68484e79f0f34f66b2616bda8fbda1ad63e69d76b719efb6b383629a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ecb4407f68484e79f0f34f66b2616bda8fbda1ad63e69d76b719efb6b383629a->enter($__internal_ecb4407f68484e79f0f34f66b2616bda8fbda1ad63e69d76b719efb6b383629a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "SonataAdminBundle:CRUD:list_inner_row.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_158f8be18c4eb83b49d5cd3862a427ba8b9aadbc0c23488d630b230a466363dc->leave($__internal_158f8be18c4eb83b49d5cd3862a427ba8b9aadbc0c23488d630b230a466363dc_prof);
+        $__internal_9537604381b9317f0f94c732bcefbe7f727392d3b42be9483431f429511fefd2->leave($__internal_9537604381b9317f0f94c732bcefbe7f727392d3b42be9483431f429511fefd2_prof);
 
         
-        $__internal_44442b8ba60cafd53d992b54b74008c7fd2dbd801822617d5f7d506413e87209->leave($__internal_44442b8ba60cafd53d992b54b74008c7fd2dbd801822617d5f7d506413e87209_prof);
+        $__internal_ecb4407f68484e79f0f34f66b2616bda8fbda1ad63e69d76b719efb6b383629a->leave($__internal_ecb4407f68484e79f0f34f66b2616bda8fbda1ad63e69d76b719efb6b383629a_prof);
 
     }
 
@@ -72,6 +72,6 @@ file that was distributed with this source code.
 #}
 
 {% extends 'SonataAdminBundle:CRUD:base_list_inner_row.html.twig' %}
-", "SonataAdminBundle:CRUD:list_inner_row.html.twig", "C:\\wamp64\\www\\plateformeanelis\\vendor\\sonata-project\\admin-bundle/Resources/views/CRUD/list_inner_row.html.twig");
+", "SonataAdminBundle:CRUD:list_inner_row.html.twig", "C:\\wamp64\\www\\mailing\\plateformeanelis\\vendor\\sonata-project\\admin-bundle/Resources/views/CRUD/list_inner_row.html.twig");
     }
 }

@@ -1,0 +1,6 @@
+services:
+    sonata.admin.newsletter:
+        class: Admin\MailingBundle\Admin\NewsletterAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Newsletter, label: Newsletter }
+        arguments: [~, Admin\MailingBundle\Entity\Newsletter, SonataAdminBundle:CRUD]

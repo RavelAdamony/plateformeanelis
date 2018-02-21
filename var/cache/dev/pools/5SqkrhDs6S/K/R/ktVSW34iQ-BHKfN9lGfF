@@ -1,3 +1,0 @@
-1550013308
-%255BApplication%255COffreBundle%255CEntity%255COffers%2524datepublished%255D%255B1%255D
-a:1:{i:0;O:27:"Doctrine\ORM\Mapping\Column":9:{s:4:"name";s:13:"datepublished";s:4:"type";s:4:"date";s:6:"length";N;s:9:"precision";i:0;s:5:"scale";i:0;s:6:"unique";b:0;s:8:"nullable";b:0;s:7:"options";a:0:{}s:16:"columnDefinition";N;}}

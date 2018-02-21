@@ -3,7 +3,7 @@
 namespace Admin\UserBundle\Entity;
 
 use Application\CotisationBundle\Entity\Cotisation;
-use Admin\UserBundle\Entity\Newsletter;
+use Admin\MailingBundle\Entity\Newsletter;
 use Application\MainBundle\Entity\Image;
 use Doctrine\ORM\Mapping as ORM; // To check
 use FOS\UserBundle\Model\User as BaseUser;
@@ -242,10 +242,10 @@ class User extends BaseUser
     protected $isGraduated;
 
     /**
-     * @var ArrayCollection Newsletter $newsletters
+     * @var ArrayCollection Admin\MailingBundle\Entity\Newsletter $newsletters
      * Owning Side
      *
-     * @ORM\ManyToMany(targetEntity="Admin\UserBundle\Entity\Newsletter", inversedBy="users", cascade={"persist", "merge"})
+     * @ORM\ManyToMany(targetEntity="Admin\MailingBundle\Entity\Newsletter", inversedBy="users", cascade={"persist", "merge"})
      * @ORM\JoinTable(name="subscriber",
      *   joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *   inverseJoinColumns={@ORM\JoinColumn(name="newsletter_id", referencedColumnName="id")}
@@ -1089,9 +1089,9 @@ class User extends BaseUser
     /**
     * Add Newsletter
     *
-    * @param Newsletter $newsletter
+    * @param Admin\MailingBundle\Entity\Newsletter $newsletter
     */
-    public function addNewsletter(Newsletter $newsletter)
+    public function addNewsletter(Admin\MailingBundle\Entity\Newsletter $newsletter)
     {
         // Si l'objet fait déjà partie de la collection on ne l'ajoute pas
         if (!$this->newsletters->contains($newsletter)) {
@@ -1105,7 +1105,7 @@ class User extends BaseUser
             foreach ($items as $item) {
                 $this->addNewsletter($item);
             }
-        } elseif ($items instanceof Newsletter) {
+        } elseif ($items instanceof Admin\MailingBundle\Entity\Newsletter) {
             $this->addNewsletter($items);
         } else {
             throw new Exception("$items must be an instance of newsletters or ArrayCollection");

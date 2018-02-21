@@ -31,7 +31,6 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
         'T' => 
         array (
             'Twig\\' => 5,
-            'Tests\\' => 6,
         ),
         'S' => 
         array (
@@ -53,10 +52,10 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
             'Sonata\\DoctrineORMAdminBundle\\' => 30,
             'Sonata\\DatagridBundle\\' => 22,
             'Sonata\\CoreBundle\\' => 18,
-            'Sonata\\Cache\\Tests\\' => 19,
             'Sonata\\Cache\\' => 13,
             'Sonata\\BlockBundle\\' => 19,
             'Sonata\\AdminBundle\\' => 19,
+            'Sensio\\Bundle\\GeneratorBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
             'Sensio\\Bundle\\DistributionBundle\\' => 33,
         ),
@@ -134,10 +133,6 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Tests\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/tests',
-        ),
         'Symfony\\Polyfill\\Util\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-util',
@@ -210,13 +205,9 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
         array (
             0 => __DIR__ . '/..' . '/sonata-project/core-bundle',
         ),
-        'Sonata\\Cache\\Tests\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/cache/test',
-        ),
         'Sonata\\Cache\\' => 
         array (
-            0 => __DIR__ . '/..' . '/sonata-project/cache/lib',
+            0 => __DIR__ . '/..' . '/sonata-project/cache/src',
         ),
         'Sonata\\BlockBundle\\' => 
         array (
@@ -225,6 +216,10 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
         'Sonata\\AdminBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/admin-bundle',
+        ),
+        'Sensio\\Bundle\\GeneratorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sensio/generator-bundle',
         ),
         'Sensio\\Bundle\\FrameworkExtraBundle\\' => 
         array (
@@ -350,6 +345,10 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
         array (
             0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/../..' . '/src',
     );
 
     public static $prefixesPsr0 = array (
@@ -490,6 +489,7 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$prefixesPsr0;
             $loader->fallbackDirsPsr0 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$classMap;

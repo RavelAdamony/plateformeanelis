@@ -10,7 +10,7 @@
         ]
     },
     "autoload-dev": {
-        "psr-4": { "Tests\\": "tests/" }
+        "psr-4": { "": "src/" }
     },
     "require": {
         "php": ">=5.5",
@@ -35,7 +35,8 @@
         "jms/payment-core-bundle": "^1.3",
         "jms/payment-paypal-bundle": "^1.1",
         "doctrine/doctrine-migrations-bundle": "^1.2",
-        "mailjet/mailjet-apiv3-php": "^1.2"
+        "mailjet/mailjet-apiv3-php": "^1.2",
+        "sensio/generator-bundle": "^3.1"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.2"
