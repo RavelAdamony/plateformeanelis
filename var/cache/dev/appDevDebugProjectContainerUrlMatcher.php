@@ -855,42 +855,47 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 if (0 === strpos($pathinfo, '/admin/admin/mailing/newsletter')) {
                     // admin_admin_mailing_newsletter_list
                     if ($pathinfo === '/admin/admin/mailing/newsletter/list') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_list',  '_route' => 'admin_admin_mailing_newsletter_list',);
+                        return array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::listAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_list',  '_route' => 'admin_admin_mailing_newsletter_list',);
                     }
 
                     // admin_admin_mailing_newsletter_create
                     if ($pathinfo === '/admin/admin/mailing/newsletter/create') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_create',  '_route' => 'admin_admin_mailing_newsletter_create',);
+                        return array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::createAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_create',  '_route' => 'admin_admin_mailing_newsletter_create',);
                     }
 
                     // admin_admin_mailing_newsletter_batch
                     if ($pathinfo === '/admin/admin/mailing/newsletter/batch') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_batch',  '_route' => 'admin_admin_mailing_newsletter_batch',);
+                        return array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::batchAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_batch',  '_route' => 'admin_admin_mailing_newsletter_batch',);
                     }
 
                     // admin_admin_mailing_newsletter_edit
                     if (preg_match('#^/admin/admin/mailing/newsletter/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_edit')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_edit',));
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_edit')), array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::editAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_edit',));
                     }
 
                     // admin_admin_mailing_newsletter_delete
                     if (preg_match('#^/admin/admin/mailing/newsletter/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_delete')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_delete',));
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_delete')), array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::deleteAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_delete',));
                     }
 
                     // admin_admin_mailing_newsletter_show
                     if (preg_match('#^/admin/admin/mailing/newsletter/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_show')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_show',));
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_show')), array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::showAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_show',));
                     }
 
                     // admin_admin_mailing_newsletter_export
                     if ($pathinfo === '/admin/admin/mailing/newsletter/export') {
-                        return array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_export',  '_route' => 'admin_admin_mailing_newsletter_export',);
+                        return array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::exportAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_export',  '_route' => 'admin_admin_mailing_newsletter_export',);
                     }
 
                     // admin_admin_mailing_newsletter_mailjetexport
                     if (preg_match('#^/admin/admin/mailing/newsletter/(?P<id>[^/]++)/mailjetexport$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_mailjetexport')), array (  '_controller' => 'Sonata\\AdminBundle\\Controller\\CRUDController::mailjetexportAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_mailjetexport',));
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_mailjetexport')), array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::mailjetexportAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_mailjetexport',));
+                    }
+
+                    // admin_admin_mailing_newsletter_addUserList
+                    if (preg_match('#^/admin/admin/mailing/newsletter/(?P<id>[^/]++)/addUserList$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_admin_mailing_newsletter_addUserList')), array (  '_controller' => 'Admin\\MailingBundle\\Controller\\CRUDController::addUserListAction',  '_sonata_admin' => 'sonata.admin.newsletter',  '_sonata_name' => 'admin_admin_mailing_newsletter_addUserList',));
                     }
 
                 }

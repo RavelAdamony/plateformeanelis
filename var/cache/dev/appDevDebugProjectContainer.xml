@@ -1059,7 +1059,7 @@
                 <tag name="cache.pool" clearer="cache.default_clearer"/>
                 <argument>4UaKQW1lBB</argument>
                 <argument>0</argument>
-                <argument>lX9oGKxLAS3FDB9Nc+28OA</argument>
+                <argument>ql3-pIVMLQq3fBOdN6I94M</argument>
                 <argument>C:\wamp64\www\mailing\plateformeanelis\var\cache\dev/pools</argument>
                 <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                 <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1243,7 +1243,7 @@
       <tag name="cache.pool" clearer="cache.default_clearer"/>
       <argument>nBm9ol17oT</argument>
       <argument>0</argument>
-      <argument>lX9oGKxLAS3FDB9Nc+28OA</argument>
+      <argument>ql3-pIVMLQq3fBOdN6I94M</argument>
       <argument>C:\wamp64\www\mailing\plateformeanelis\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1253,7 +1253,7 @@
       <tag name="cache.pool" clearer="cache.default_clearer"/>
       <argument>FCCcpf+gyE</argument>
       <argument>0</argument>
-      <argument>lX9oGKxLAS3FDB9Nc+28OA</argument>
+      <argument>ql3-pIVMLQq3fBOdN6I94M</argument>
       <argument>C:\wamp64\www\mailing\plateformeanelis\var\cache\dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2712,7 +2712,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5a8d521ff3c582.44113760</argument>
+            <argument>5a8dc115a30e69.48692140</argument>
           </service>
         </argument>
       </argument>
@@ -3043,7 +3043,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5a8d521ff3c582.44113760</argument>
+            <argument>5a8dc115a30e69.48692140</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -7082,7 +7082,10 @@
       <tag name="sonata.admin" manager_type="orm" group="Gestion des Newsletter" label="Newsletter"/>
       <argument>sonata.admin.newsletter</argument>
       <argument>Admin\MailingBundle\Entity\Newsletter</argument>
-      <argument>SonataAdminBundle:CRUD</argument>
+      <argument>AdminMailingBundle:CRUD</argument>
+      <call method="setTranslationDomain">
+        <argument>AdminMailingBundle</argument>
+      </call>
       <call method="setFormTheme">
         <argument type="collection">
           <argument>SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig</argument>

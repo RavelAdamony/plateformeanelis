@@ -16,7 +16,8 @@ class NewsletterAdmin extends AbstractAdmin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-    $collection->add('mailjetexport', $this->getRouterIdParameter().'/mailjetexport');
+        $collection->add('mailjetexport', $this->getRouterIdParameter().'/mailjetexport');
+        $collection->add('addUserList', $this->getRouterIdParameter().'/addUserList');
     }
     
     /**
@@ -47,7 +48,8 @@ class NewsletterAdmin extends AbstractAdmin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
-                    'mailjetexport' => array('template' => 'AdminMailingBundle:CRUD:list__action_mailjetexport.html.twig')
+                    'mailjetexport' => array('template' => 'AdminMailingBundle:CRUD:list__action_mailjetexport.html.twig'),
+                    'addUserList' => array('template' => 'AdminMailingBundle:CRUD:list__action_addUserList.html.twig')
                     )
                 )
             )
