@@ -40,7 +40,26 @@ class CRUDController extends Controller
         if (!$object) {
             throw new NotFoundHttpException(sprintf('unable to find the object with id: %s', $id));
         }
-
+        $em = $this->getDoctrine()->getManager();
+        $listeUser = $em->getRepository("AdminUserBundle:User")->findAll();
+        $newsletter = $em->getRepository('AdminMailingBundle:Newsletter')->find($id);
+        if (!$newsletter) {
+        	$this->addFlash('sonata_flash_error', 'Erreur sur la newsletter');
+	        throw $this->createNotFoundException(
+	            'Aucun newsletter trouvé avec l\'id :  '.$id
+	        );
+    	}
+        if (!$listeUser) {
+        	$this->addFlash('sonata_flash_error', 'Erreur sur la récupération des utilisateur');
+	        throw $this->createNotFoundException(
+	            'Aucun user trouvé :  '.$id
+	        );
+    	}
+	    $newsletter->setUsers($listeUser);
+	    if(empty($newsletter->getUsers())){
+	    	$this->addFlash('sonata_flash_error', 'Erreur ur \'ajout de la newsletter');
+	    }
+	    $em->flush();
         $this->addFlash('sonata_flash_success', 'Users Ajouté');
 
         return new RedirectResponse($this->admin->generateUrl('list'));

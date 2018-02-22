@@ -63,8 +63,8 @@ class NewsletterAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('newsletter','text', array('label' => 'Nom de la newsletter'))
-            ->add('commentaire', 'text', array('required' => false))
-            ->add('frequence','text', array('label' => 'Fréquence d\'envoi de la newsletter', 'required' => false))
+            ->add('commentaire', 'text')
+            ->add('frequence','text', array('label' => 'Fréquence d\'envoi de la newsletter'))
             ->add('users')
         ;
     }
