@@ -92,6 +92,6 @@ class __TwigTemplate_8a989aa81228a194013d8a3deb9e615d8aebe8115278a9f4264dcc2e954
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "@Twig/Exception/error500.html.twig", "D:\\WAMP\\www\\plateformeanelis\\app\\Resources\\TwigBundle\\views\\Exception\\error500.html.twig");
+        return new Twig_Source("", "@Twig/Exception/error500.html.twig", "D:\\WAMP\\www\\Projet2018\\plateformeanelis\\app\\Resources\\TwigBundle\\views\\Exception\\error500.html.twig");
     }
 }

@@ -36,7 +36,6 @@ class MethodGenerator extends ZendMethodGenerator
      */
     public static function fromReflection(MethodReflection $reflectionMethod) : self
     {
-        /* @var $method self */
         $method = parent::fromReflection($reflectionMethod);
 
         $method->setInterface(false);

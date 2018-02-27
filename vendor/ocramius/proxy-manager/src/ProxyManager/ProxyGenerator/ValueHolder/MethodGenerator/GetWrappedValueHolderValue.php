@@ -36,13 +36,11 @@ class GetWrappedValueHolderValue extends MethodGenerator
      * Constructor
      *
      * @param PropertyGenerator $valueHolderProperty
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
      */
     public function __construct(PropertyGenerator $valueHolderProperty)
     {
         parent::__construct('getWrappedValueHolderValue');
-        $this->setDocBlock('{@inheritDoc}');
+        $this->setDocblock('{@inheritDoc}');
         $this->setBody('return $this->' . $valueHolderProperty->getName() . ';');
     }
 }

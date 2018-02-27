@@ -23,8 +23,6 @@ namespace ProxyManager\Factory;
 use ProxyManager\Proxy\AccessInterceptorInterface;
 use ProxyManager\ProxyGenerator\AccessInterceptorScopeLocalizerGenerator;
 use ProxyManager\ProxyGenerator\ProxyGeneratorInterface;
-use ProxyManager\Signature\Exception\InvalidSignatureException;
-use ProxyManager\Signature\Exception\MissingSignatureException;
 
 /**
  * Factory responsible of producing proxy objects
@@ -47,10 +45,6 @@ class AccessInterceptorScopeLocalizerFactory extends AbstractBaseFactory
      *                                       after method logic is executed
      *
      * @return AccessInterceptorInterface
-     *
-     * @throws InvalidSignatureException
-     * @throws MissingSignatureException
-     * @throws \OutOfBoundsException
      */
     public function createProxy(
         $instance,

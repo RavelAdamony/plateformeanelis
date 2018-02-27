@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Sonata\AdminBundle\Controller;
 
 use Doctrine\Common\Inflector\Inflector;

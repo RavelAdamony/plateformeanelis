@@ -67,7 +67,6 @@ class Autoloader implements AutoloaderInterface
         }
 
         /* @noinspection PhpIncludeInspection */
-        /* @noinspection UsingInclusionOnceReturnValueInspection */
         return (bool) require_once $file;
     }
 }

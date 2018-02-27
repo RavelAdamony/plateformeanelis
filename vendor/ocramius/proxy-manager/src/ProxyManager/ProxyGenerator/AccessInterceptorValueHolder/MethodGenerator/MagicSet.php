@@ -21,7 +21,6 @@ declare(strict_types=1);
 namespace ProxyManager\ProxyGenerator\AccessInterceptorValueHolder\MethodGenerator;
 
 use ProxyManager\Generator\MagicMethodGenerator;
-use ProxyManager\ProxyGenerator\Util\GetMethodIfExists;
 use Zend\Code\Generator\ParameterGenerator;
 use ProxyManager\ProxyGenerator\AccessInterceptorValueHolder\MethodGenerator\Util\InterceptorGenerator;
 use ProxyManager\ProxyGenerator\PropertyGenerator\PublicPropertiesMap;
@@ -44,9 +43,6 @@ class MagicSet extends MagicMethodGenerator
      * @param PropertyGenerator   $prefixInterceptors
      * @param PropertyGenerator   $suffixInterceptors
      * @param PublicPropertiesMap $publicProperties
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
      */
     public function __construct(
         ReflectionClass $originalClass,
@@ -61,10 +57,10 @@ class MagicSet extends MagicMethodGenerator
             [new ParameterGenerator('name'), new ParameterGenerator('value')]
         );
 
-        $parent          = GetMethodIfExists::get($originalClass, '__set');
+        $override        = $originalClass->hasMethod('__set');
         $valueHolderName = $valueHolder->getName();
 
-        $this->setDocBlock(($parent ? "{@inheritDoc}\n" : '') . '@param string $name');
+        $this->setDocblock(($override ? "{@inheritDoc}\n" : '') . '@param string $name');
 
         $callParent = PublicScopeSimulator::getPublicAccessSimulationCode(
             PublicScopeSimulator::OPERATION_SET,
@@ -80,13 +76,14 @@ class MagicSet extends MagicMethodGenerator
                 . "\n} else {\n    $callParent\n}\n\n";
         }
 
-        $this->setBody(InterceptorGenerator::createInterceptedMethodBody(
-            $callParent,
-            $this,
-            $valueHolder,
-            $prefixInterceptors,
-            $suffixInterceptors,
-            $parent
-        ));
+        $this->setBody(
+            InterceptorGenerator::createInterceptedMethodBody(
+                $callParent,
+                $this,
+                $valueHolder,
+                $prefixInterceptors,
+                $suffixInterceptors
+            )
+        );
     }
 }
