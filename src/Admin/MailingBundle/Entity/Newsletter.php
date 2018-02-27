@@ -101,7 +101,7 @@ class Newsletter
         return $this->newsletter;
     }
     public function __toString() {
-        return $this->newsletter."\n  ".$this->getcommentaire(). " \n Cette newsletter est ".$this->getfrequence();
+        return $this->newsletter."~  ".$this->getcommentaire(). " ~ ".$this->getfrequence();
     }
     /**
      * Set commentaire

@@ -25,8 +25,6 @@ class UserAdmin extends AbstractAdmin
             $object->setPassword($user->getPassword());
         }
     }
-
-
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
