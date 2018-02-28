@@ -4,6 +4,7 @@ namespace Admin\MailingBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Admin\UserBundle\Entity\User;
 /**
  * newsletter
  *
@@ -100,7 +101,7 @@ class Newsletter
         return $this->newsletter;
     }
     public function __toString() {
-        return $this->newsletter."\n  ".$this->getcommentaire(). " \n Cette newsletter est ".$this->getfrequence();
+        return $this->newsletter."~  ".$this->getcommentaire(). " ~ ".$this->getfrequence();
     }
     /**
      * Set commentaire
@@ -154,9 +155,9 @@ class Newsletter
     /**
      * Add User
      *
-     * @param Admin\UserBundle\Entity\User $user
+     * @param \Admin\UserBundle\Entity\User $user
      */
-    public function adduser(Admin\UserBundle\Entity\User $user)
+    public function adduser(\Admin\UserBundle\Entity\User $user)
     {
         // Si l'objet fait déjà partie de la collection on ne l'ajoute pas
         if (!$this->users->contains($user)) {
@@ -173,7 +174,7 @@ class Newsletter
             foreach ($items as $item) {
                 $this->addUser($item);
             }
-        } elseif ($items instanceof Admin\UserBundle\Entity\User) {
+        } elseif ($items instanceof \Admin\UserBundle\Entity\User) {
             $this->addUser($items);
         } else {
             throw new Exception("$items must be an instance of User or ArrayCollection");

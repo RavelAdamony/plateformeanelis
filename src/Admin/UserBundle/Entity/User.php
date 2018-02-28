@@ -1089,9 +1089,9 @@ class User extends BaseUser
     /**
     * Add Newsletter
     *
-    * @param Admin\MailingBundle\Entity\Newsletter $newsletter
+    * @param \Admin\MailingBundle\Entity\Newsletter $newsletter
     */
-    public function addNewsletter(Admin\MailingBundle\Entity\Newsletter $newsletter)
+    public function addNewsletter(\Admin\MailingBundle\Entity\Newsletter $newsletter)
     {
         // Si l'objet fait déjà partie de la collection on ne l'ajoute pas
         if (!$this->newsletters->contains($newsletter)) {
