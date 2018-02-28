@@ -199,8 +199,5 @@ class CRUDController extends Controller
         $this->addFlash('sonata_flash_success', 'Users Ajouté');
 
         return new RedirectResponse($this->admin->generateUrl('list'));
-
-        // if you have a filtered list and want to keep your filters after the redirect
-        // return new RedirectResponse($this->admin->generateUrl('list', ['filter' => $this->admin->getFilterParameters()]));
     }
 }
