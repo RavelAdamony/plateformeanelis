@@ -40,9 +40,7 @@ class EvaluatingGeneratorStrategy implements GeneratorStrategyInterface
      */
     public function __construct()
     {
-        // @codeCoverageIgnoreStart
         $this->canEval = ! ini_get('suhosin.executor.disable_eval');
-        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -54,9 +52,9 @@ class EvaluatingGeneratorStrategy implements GeneratorStrategyInterface
     {
         $code = $classGenerator->generate();
 
-        // @codeCoverageIgnoreStart
         if (! $this->canEval) {
-            $fileName = tempnam(sys_get_temp_dir(), 'EvaluatingGeneratorStrategy.php.tmp.');
+            // @codeCoverageIgnoreStart
+            $fileName = sys_get_temp_dir() . '/EvaluatingGeneratorStrategy.php.tmp.' . uniqid('', true);
 
             file_put_contents($fileName, "<?php\n" . $code);
             /* @noinspection PhpIncludeInspection */
@@ -64,8 +62,8 @@ class EvaluatingGeneratorStrategy implements GeneratorStrategyInterface
             unlink($fileName);
 
             return $code;
+            // @codeCoverageIgnoreEnd
         }
-        // @codeCoverageIgnoreEnd
 
         eval($code);
 

@@ -37,8 +37,6 @@ class StaticProxyConstructor extends MethodGenerator
      * Constructor
      *
      * @param ReflectionClass $originalClass Reflection of the class to proxy
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
      */
     public function __construct(ReflectionClass $originalClass)
     {
@@ -51,7 +49,7 @@ class StaticProxyConstructor extends MethodGenerator
             Properties::fromReflectionClass($originalClass)->getPublicProperties()
         );
 
-        $this->setDocBlock('Constructor for null object initialization');
+        $this->setDocblock("Constructor for null object initialization");
         $this->setBody(
             'static $reflection;' . "\n\n"
             . '$reflection = $reflection ?: $reflection = new \ReflectionClass(__CLASS__);' . "\n"

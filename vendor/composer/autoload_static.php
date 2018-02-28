@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
+class ComposerStaticInitee8a0033163c5a19d1e46bf710c236d4
 {
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
@@ -17,8 +17,8 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
-        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         '472f905bdf77cacabbcae41705d5a65a' => __DIR__ . '/../..' . '/app/AppKernel.php',
     );
 
@@ -52,6 +52,7 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
             'Sonata\\DoctrineORMAdminBundle\\' => 30,
             'Sonata\\DatagridBundle\\' => 22,
             'Sonata\\CoreBundle\\' => 18,
+            'Sonata\\Cache\\Tests\\' => 19,
             'Sonata\\Cache\\' => 13,
             'Sonata\\BlockBundle\\' => 19,
             'Sonata\\AdminBundle\\' => 19,
@@ -205,9 +206,13 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
         array (
             0 => __DIR__ . '/..' . '/sonata-project/core-bundle',
         ),
+        'Sonata\\Cache\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/cache/test',
+        ),
         'Sonata\\Cache\\' => 
         array (
-            0 => __DIR__ . '/..' . '/sonata-project/cache/src',
+            0 => __DIR__ . '/..' . '/sonata-project/cache/lib',
         ),
         'Sonata\\BlockBundle\\' => 
         array (
@@ -487,12 +492,12 @@ class ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$prefixesPsr0;
-            $loader->fallbackDirsPsr0 = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$fallbackDirsPsr0;
-            $loader->classMap = ComposerStaticInit256eadb9ef6936ac54d19a6ebd111439::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitee8a0033163c5a19d1e46bf710c236d4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitee8a0033163c5a19d1e46bf710c236d4::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitee8a0033163c5a19d1e46bf710c236d4::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitee8a0033163c5a19d1e46bf710c236d4::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInitee8a0033163c5a19d1e46bf710c236d4::$fallbackDirsPsr0;
+            $loader->classMap = ComposerStaticInitee8a0033163c5a19d1e46bf710c236d4::$classMap;
 
         }, null, ClassLoader::class);
     }

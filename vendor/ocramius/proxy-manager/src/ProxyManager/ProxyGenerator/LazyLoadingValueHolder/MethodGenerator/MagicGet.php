@@ -42,9 +42,6 @@ class MagicGet extends MagicMethodGenerator
      * @param PropertyGenerator   $initializerProperty
      * @param PropertyGenerator   $valueHolderProperty
      * @param PublicPropertiesMap $publicProperties
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
      */
     public function __construct(
         ReflectionClass $originalClass,
@@ -56,7 +53,7 @@ class MagicGet extends MagicMethodGenerator
 
         $hasParent = $originalClass->hasMethod('__get');
 
-        $this->setDocBlock(($hasParent ? "{@inheritDoc}\n" : '') . '@param string $name');
+        $this->setDocblock(($hasParent ? "{@inheritDoc}\n" : '') . '@param string $name');
 
         $initializer = $initializerProperty->getName();
         $valueHolder = $valueHolderProperty->getName();
@@ -86,7 +83,14 @@ class MagicGet extends MagicMethodGenerator
         );
     }
 
-    private function setInitializerBody(string $initializer, string $valueHolder, string $callParent) : void
+    /**
+     * @param string $initializer
+     * @param string $valueHolder
+     * @param string $callParent
+     *
+     * @return void
+     */
+    private function setInitializerBody(string $initializer, string $valueHolder, string $callParent)
     {
         $this->setBody(
             '$this->' . $initializer . ' && $this->' . $initializer
