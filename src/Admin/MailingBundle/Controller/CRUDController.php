@@ -10,16 +10,15 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class CRUDController extends Controller
 {
+	//Identifiants de la BD
 	const DB_SERVERNAME = "localhost";
 	const DB_USERNAME = "root";
 	const DB_PASSWORD = "root";
 	const DB_DBNAME = "panelis";
+	
+	//Identifiants du compte mailjet (clé publique & privée)
 	const MJ_PUBLIC_KEY = "4c58205eb61ff40311b3ee4f5bacb082";
 	const MJ_PRIVATE_KEY = "075cdea4b6f2938cedf47795eff2d2b9";
-	
-	/**
-	* @param $id
-	*/
 	
 	private function getDBListID($id){
 		
@@ -86,19 +85,12 @@ class CRUDController extends Controller
 	
 	private function mailjetGetAllUsers($list_id){
 		
+		//Récupération de tous les contacts de la liste Mailjet
 		$mj = new \Mailjet\Client(self::MJ_PUBLIC_KEY, self::MJ_PRIVATE_KEY);
-		$params = array(
-			"method" => "GET",
-			"ContactsList" => $list_id
-		);
-	
-		$result = $mj->listrecipient($params);
-	
-		if ($mj->_response_code == 200)
-		   echo "success - got unsubscribed contact(s) ";
-		else
-		   echo "error - ".$mj->_response_code;
-	
+		$result = 0;
+		$response = $mj->get(Resources::$Contact, ['contactslist' => $list_id]);
+		if ($response->success())
+			$result = $response->getData();
 		return $result;   
 	}
 	
@@ -116,7 +108,7 @@ class CRUDController extends Controller
 			'Contacts' => $users
 		];
 	
-		//On effectue les modifications sur la liste Mailjet et on retourne un message d'erreur
+		//On effectue les modifications sur la liste Mailjet et on retourne un message indiquant un succès
 		$response = $mj->post(Resources::$ContactManagemanycontacts, ['body' => $body]);
 		$response->success() && var_dump($response->getData());
 		return 0;
@@ -151,24 +143,40 @@ class CRUDController extends Controller
             throw new NotFoundHttpException(sprintf('unable to find the object with id: %s', $id));
         }
 		
-		//Ajoute tous les utilisateurs à la liste en question
+		//Récupération de l'ID de la liste Mailjet en question
 		$list_id = self::getDBListID($id);
-		//$users = self::mailjetGetAllUsers($list_id);
-		//self::mailjetDeleteList($list_id, $users);
-		$users = self::getDBUsers($list_id);
-		self::mailjetExportList($list_id, $users); 
-
-		//Message indiquant un succès
-        $this->addFlash('sonata_flash_success', 'Export successful');
+		
+		//Si la liste existe
+		if ($list_id != 0){
+			
+			//Vidage de la liste Mailjet
+			$users = self::mailjetGetAllUsers($list_id);
+			if ($users != 0){
+				self::mailjetDeleteList($list_id, $users);
+			
+				// Export de la liste des contacts de la BD vers Mailjet
+				$users = self::getDBUsers($list_id);
+				self::mailjetExportList($list_id, $users);
+				
+				//Message indiquant un succès
+				$this->addFlash('sonata_flash_success', 'Export réussi');
+			}
+			
+			//Si le vidage a échoué, la liste n'existe pas
+			else{
+				$this->addFlash('sonata_flash_error', 'List ID Mailjet non trouvée');
+			}
+		}
+		
+		//Sinon, retourner un message d'erreur
+		else{
+			$this->addFlash('sonata_flash_error', 'List ID Mailjet non assignée');
+		}
+		
+		//Revenir sur la page avec la liste des newsletters
         return new RedirectResponse($this->admin->generateUrl('list'));
-
-        // if you have a filtered list and want to keep your filters after the redirect
-        // return new RedirectResponse($this->admin->generateUrl('list', ['filter' => $this->admin->getFilterParameters()]));
     }
 
-    /**
-     * @param $id
-     */
     public function addUserListAction($id)
     {
     	$em = $this->getDoctrine()->getManager();
