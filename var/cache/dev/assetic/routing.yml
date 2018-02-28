@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: 'D:\WAMP\www\Projet2018\plateformeanelis\app/config/routing_dev.yml'
+    resource: 'C:\wamp64\www\mailing\plateformeanelis\app/config/routing_dev.yml'
