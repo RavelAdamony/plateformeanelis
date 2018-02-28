@@ -171,13 +171,55 @@ class CRUDController extends Controller
      */
     public function addUserListAction($id)
     {
-        $object = $this->admin->getSubject();
+    	$em = $this->getDoctrine()->getManager();
+        $listeUser = self::getalluser($em);
+        $newsletter = self::getNewsletter($em,$id);
+	    $newsletter->setUsers($listeUser);
+	    if(empty($newsletter->getUsers())){
+	    	$this->addFlash('sonata_flash_error', 'Erreur d\'ajout d\'utilisateurs dans newsletter');
+	    }
+	    $em->flush();
+        $this->addFlash('sonata_flash_success', 'Users Ajouté');
 
-        if (!$object) {
-            throw new NotFoundHttpException(sprintf('unable to find the object with id: %s', $id));
+        return new RedirectResponse($this->admin->generateUrl('list'));
+    }
+        /**
+     * @param $id
+     */
+    public function addUserPromoAction($id,$promotion)
+    {
+		$em = $this->getDoctrine()->getManager();
+        $listeUser = self::getalluser($em);
+        $newsletter = self::getNewsletter($em,$id);
+        foreach ($listeUser as $user) {
+        	if ($user->getPromotion() ==(string)$promotion) {
+        		$newsletter->setUsers($user);
+        	}
         }
-        $em = $this->getDoctrine()->getManager();
+	    if(empty($newsletter->getUsers())){
+	    	$this->addFlash('sonata_flash_error', 'Erreur d\'ajout de la promotion');
+	    }
+	    $em->flush();
+        $this->addFlash('sonata_flash_success', 'Users Ajouté');
+
+        return new RedirectResponse($this->admin->generateUrl('list'));
+    }
+
+    private function getalluser($em){
+		
         $listeUser = $em->getRepository("AdminUserBundle:User")->findAll();
+        if (!$listeUser) {
+        	$this->addFlash('sonata_flash_error', 'Erreur sur la récupération des utilisateur');
+	        throw $this->createNotFoundException(
+	            'Aucun user trouvé :  '.$id
+	        );
+    	}
+    	return $listeUser;
+    }
+    /**
+     * @param $id
+     */
+    private function getNewsletter($em,$id){
         $newsletter = $em->getRepository('AdminMailingBundle:Newsletter')->find($id);
         if (!$newsletter) {
         	$this->addFlash('sonata_flash_error', 'Erreur sur la newsletter');
@@ -185,19 +227,6 @@ class CRUDController extends Controller
 	            'Aucun newsletter trouvé avec l\'id :  '.$id
 	        );
     	}
-        if (!$listeUser) {
-        	$this->addFlash('sonata_flash_error', 'Erreur sur la récupération des utilisateur');
-	        throw $this->createNotFoundException(
-	            'Aucun user trouvé :  '.$id
-	        );
-    	}
-	    $newsletter->setUsers($listeUser);
-	    if(empty($newsletter->getUsers())){
-	    	$this->addFlash('sonata_flash_error', 'Erreur ur \'ajout de la newsletter');
-	    }
-	    $em->flush();
-        $this->addFlash('sonata_flash_success', 'Users Ajouté');
-
-        return new RedirectResponse($this->admin->generateUrl('list'));
+    	return $newsletter;
     }
 }
