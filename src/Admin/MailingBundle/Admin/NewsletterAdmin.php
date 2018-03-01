@@ -8,7 +8,6 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
 
 class NewsletterAdmin extends AbstractAdmin
 {
@@ -44,6 +43,7 @@ class NewsletterAdmin extends AbstractAdmin
             ->add('newsletter')
             ->add('commentaire')
             ->add('frequence')
+            ->add('mailjet_id','integer')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -66,11 +66,8 @@ class NewsletterAdmin extends AbstractAdmin
             ->add('newsletter','text', array('label' => 'Nom de la newsletter'))
             ->add('commentaire', 'text')
             ->add('frequence','text', array('label' => 'Fréquence d\'envoi de la newsletter'))
-            ->add('users',ModelAutocompleteType::class, array(
-                        'required' => true,
-                        'multiple' => true,
-                        'property' => 'name',
-                    ))
+            ->add('mailjet_id','integer', array('label' => 'id de mailjet' ))
+            ->add('users')
         ;
     }
 
@@ -86,10 +83,6 @@ class NewsletterAdmin extends AbstractAdmin
             ->add('frequence')
             ->add('users')
         ;
-    }
-    protected function getlistPromoUser() {
-        $getlistuser = $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager()->getRepository('Admin\UserBundle\Entity\User')->findall();
-        return $getlistuser;
     }
 
 }

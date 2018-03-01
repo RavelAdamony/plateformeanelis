@@ -38,13 +38,11 @@ class InitializeProxy extends MethodGenerator
      *
      * @param PropertyGenerator   $initializerProperty
      * @param ZendMethodGenerator $callInitializer
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
      */
     public function __construct(PropertyGenerator $initializerProperty, ZendMethodGenerator $callInitializer)
     {
         parent::__construct('initializeProxy');
-        $this->setDocBlock('{@inheritDoc}');
+        $this->setDocblock('{@inheritDoc}');
         $this->setReturnType('bool');
 
         $this->setBody(

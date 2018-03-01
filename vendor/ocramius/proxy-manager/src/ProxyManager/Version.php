@@ -44,8 +44,6 @@ final class Version
      * where the detected version is what composer could detect.
      *
      * @return string
-     *
-     * @throws \OutOfBoundsException
      */
     public static function getVersion() : string
     {

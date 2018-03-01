@@ -48,6 +48,6 @@ class __TwigTemplate_ab1d9243a513b92b42207c54666d0a718e679fad9907e846caf0c3c04c7
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "FOSUserBundle::layout.html.twig", "D:\\WAMP\\www\\plateformeanelis\\src\\Admin\\UserBundle/Resources/views/layout.html.twig");
+        return new Twig_Source("", "FOSUserBundle::layout.html.twig", "D:\\WAMP\\www\\Projet2018\\plateformeanelis\\src\\Admin\\UserBundle/Resources/views/layout.html.twig");
     }
 }

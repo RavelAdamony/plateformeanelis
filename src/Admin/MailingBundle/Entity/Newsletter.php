@@ -5,6 +5,7 @@ namespace Admin\MailingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Admin\UserBundle\Entity\User;
+use Symfony\Component\Config\Definition\Exception\Exception;
 /**
  * newsletter
  *
@@ -50,15 +51,21 @@ class Newsletter
      * @ORM\ManyToMany(targetEntity="Admin\UserBundle\Entity\User", mappedBy="newsletters", cascade={"persist", "merge"})
      */
     private $users;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="mailjet_id", type="integer")
+     */
+    private $mailjet_id = 0;
 
     /**
      * Set id
      *
-     * @param string $id
+     * @param integer $id
      *
      * @return Events
      */
-
     public function setId($id)
     {
         $this->id = $id;
@@ -101,7 +108,7 @@ class Newsletter
         return $this->newsletter;
     }
     public function __toString() {
-        return $this->newsletter."~  ".$this->getcommentaire(). " ~ ".$this->getfrequence();
+        return $this->newsletter."\n  ".$this->getcommentaire(). " \n Cette newsletter est ".$this->getfrequence();
     }
     /**
      * Set commentaire
@@ -151,6 +158,23 @@ class Newsletter
         return $this->frequence;
     }
 
+    public function setMailjetId($id)
+    {
+        $this->mailjet_id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get mailjet_id
+     *
+     * @return integer 
+     */
+    public function getMailjetId()
+    {
+        return $this->mailjet_id;
+    }
+
 
     /**
      * Add User
@@ -190,6 +214,10 @@ class Newsletter
     {
         return $this->users;
     }
+
+
+
+
 
     public function __construct()
     {

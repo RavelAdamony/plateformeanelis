@@ -36,13 +36,11 @@ class IsProxyInitialized extends MethodGenerator
      * Constructor
      *
      * @param PropertyGenerator $initializerProperty
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
      */
     public function __construct(PropertyGenerator $initializerProperty)
     {
         parent::__construct('isProxyInitialized');
-        $this->setDocBlock('{@inheritDoc}');
+        $this->setDocblock('{@inheritDoc}');
         $this->setReturnType('bool');
         $this->setBody('return ! $this->' . $initializerProperty->getName() . ';');
     }
