@@ -176,7 +176,11 @@ class CRUDController extends Controller
 		//Revenir sur la page avec la liste des newsletters
         return new RedirectResponse($this->admin->generateUrl('list'));
     }
-
+    /**
+    *Ajout tout les utilisateurs a la newsletter
+    *@param $id
+    *
+    **/
     public function addUserListAction($id)
     {
     	$em = $this->getDoctrine()->getManager();
@@ -191,8 +195,9 @@ class CRUDController extends Controller
 
         return new RedirectResponse($this->admin->generateUrl('list'));
     }
-        /**
-     * @param $id
+     /**
+     * Ajout tout les utilisateurs de la promo a la newsletters
+     * @param $id, $promotion
      */
     public function addUserPromoAction($id,$promotion)
     {
