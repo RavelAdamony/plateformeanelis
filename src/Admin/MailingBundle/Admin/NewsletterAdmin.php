@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
-
+use Sonata\AdminBundle\Form\Type\ModelAutocompleteType;
 class NewsletterAdmin extends AbstractAdmin
 {
     /**
@@ -18,6 +18,7 @@ class NewsletterAdmin extends AbstractAdmin
     {
         $collection->add('mailjetexport', $this->getRouterIdParameter().'/mailjetexport');
         $collection->add('addUserList', $this->getRouterIdParameter().'/addUserList');
+        $collection->add('addUserPromo', $this->getRouterIdParameter().'/addUserPromo');
     }
     
     /**
@@ -67,7 +68,11 @@ class NewsletterAdmin extends AbstractAdmin
             ->add('commentaire', 'text')
             ->add('frequence','text', array('label' => 'Fréquence d\'envoi de la newsletter'))
             ->add('mailjet_id','integer', array('label' => 'id de mailjet' ))
-            ->add('users')
+            ->add('users',ModelAutocompleteType::class, array(
+                'required' => true,
+                'multiple' => true,
+                'property' => 'name',
+            ))
         ;
     }
 

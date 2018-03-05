@@ -16,19 +16,11 @@ class Version2_00_007 extends AbstractMigration {
     public function up(Schema $schema) {
 
           try {
-          	//on créer la table newsletter
+          	
               $table = $schema->getTable('newsletter');
           }
           catch(SchemaException $e){
-<<<<<<< HEAD
-           $this->addSql('CREATE TABLE newsletter (id INT AUTO_INCREMENT NOT NULL, newsletter VARCHAR(255) NOT NULL, commentaire VARCHAR(255) NOT NULL, frequence VARCHAR(255) NOT NULL, mailjet_id INT NOT NULL DEFAULT `0`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;');
-           //on remplie la table newsletter avec les 4 newsletters précédantes
-           $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(1,"mlEmployments","Recherche d\'emploi","mensuel");');
-           $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(2,"mlEvents","Tout les événements en France","mensuel");');
-           $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(3,"mlInformations","Information à ne pas louper","annuel");');
-           $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
-           $this->addSql('INSERT INTO `newsletter` (, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
-=======
+            //on créer la table newsletter
             $this->addSql('CREATE TABLE newsletter (id INT AUTO_INCREMENT NOT NULL, newsletter VARCHAR(255) NOT NULL, commentaire VARCHAR(255) NOT NULL, frequence VARCHAR(255) NOT NULL, mailjet_id INT NOT NULL DEFAULT `0`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;');
             //on remplie la table newsletter avec les 4 newsletters précédantes
             $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(1,"mlEmployments","Recherche d\'emploi","mensuel");');
@@ -36,13 +28,13 @@ class Version2_00_007 extends AbstractMigration {
             $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(3,"mlInformations","Information à ne pas louper","annuel");');
             $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
             $this->addSql('INSERT INTO `newsletter` (, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
->>>>>>> f854c4c35a20f11e01998c2e15535f272b4eabed
           }
           try {
-          	//on créer la table subscriber (table d'association)
+          	
 	          $table = $schema->getTable('subscriber');
           }
           catch(SchemaException $e){
+            //on créer la table subscriber (table d'association)
             $this->addSql('CREATE TABLE subscriber (user_id INT NOT NULL, newsletter_id INT NOT NULL, INDEX IDX_AD005B69A76ED395 (user_id), INDEX IDX_AD005B6922DB1917 (newsletter_id), PRIMARY KEY(user_id, newsletter_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;;');
             $this->addSql('ALTER TABLE subscriber ADD CONSTRAINT FK_AD005B69A76ED395 FOREIGN KEY (user_id) REFERENCES User (id);');
             $this->addSql('ALTER TABLE subscriber ADD CONSTRAINT FK_AD005B6922DB1917 FOREIGN KEY (newsletter_id) REFERENCES newsletter (id);');

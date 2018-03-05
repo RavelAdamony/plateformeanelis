@@ -125,7 +125,8 @@ class UserType extends AbstractType
             ->add('newsletters', EntityType::class, array(
                 'class'        => 'AdminMailingBundle:Newsletter',
                 'multiple'     => true,
-                'expanded'      => true
+                'expanded'      => true,
+                }
             ))
                              
         ;
