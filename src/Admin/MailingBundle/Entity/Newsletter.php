@@ -53,11 +53,11 @@ class Newsletter
     private $users;
     
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="mailjet_id", type="integer")
+     * @ORM\Column(name="mailjet_id", type="string")
      */
-    private $mailjet_id = 0;
+    private $mailjet_id = "0";
 
     /**
      * Set id
@@ -168,7 +168,7 @@ class Newsletter
     /**
      * Get mailjet_id
      *
-     * @return integer 
+     * @return string 
      */
     public function getMailjetId()
     {
