@@ -108,7 +108,7 @@ class Newsletter
         return $this->newsletter;
     }
     public function __toString() {
-        return $this->newsletter."\n  ".$this->getcommentaire(). " \n Cette newsletter est ".$this->getfrequence();
+        return $this->newsletter."\n  ".$this->getcommentaire(). " \n ".$this->getfrequence();
     }
     /**
      * Set commentaire
@@ -194,15 +194,18 @@ class Newsletter
  
     public function setUsers($items)
     {
-        if ($items instanceof ArrayCollection || is_array($items)) {
-            foreach ($items as $item) {
-                $this->addUser($item);
+        try{
+            if ($items instanceof \Admin\UserBundle\Entity\User) {
+                $this->addUser($items);
+            }else{
+                foreach ($items as $item) {
+                    $this->addUser($item);
+                }
             }
-        } elseif ($items instanceof \Admin\UserBundle\Entity\User) {
-            $this->addUser($items);
-        } else {
-            throw new Exception("$items must be an instance of User or ArrayCollection");
+        }catch(Exception $e){
+            throw new Exception("$e must be an instance of User or ArrayCollection");
         }
+
     }
  
     /**

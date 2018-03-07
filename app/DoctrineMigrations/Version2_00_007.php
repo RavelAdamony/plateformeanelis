@@ -16,7 +16,7 @@ class Version2_00_007 extends AbstractMigration {
     public function up(Schema $schema) {
 
           try {
-          	//on créer la table newsletter
+          	
               $table = $schema->getTable('newsletter');
           }
           catch(SchemaException $e){
@@ -28,10 +28,11 @@ class Version2_00_007 extends AbstractMigration {
            $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
           }
           try {
-          	//on créer la table subscriber (table d'association)
+          	
 	          $table = $schema->getTable('subscriber');
           }
           catch(SchemaException $e){
+            //on créer la table subscriber (table d'association)
             $this->addSql('CREATE TABLE subscriber (user_id INT NOT NULL, newsletter_id INT NOT NULL, INDEX IDX_AD005B69A76ED395 (user_id), INDEX IDX_AD005B6922DB1917 (newsletter_id), PRIMARY KEY(user_id, newsletter_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;;');
             $this->addSql('ALTER TABLE subscriber ADD CONSTRAINT FK_AD005B69A76ED395 FOREIGN KEY (user_id) REFERENCES User (id);');
             $this->addSql('ALTER TABLE subscriber ADD CONSTRAINT FK_AD005B6922DB1917 FOREIGN KEY (newsletter_id) REFERENCES newsletter (id);');
