@@ -61,7 +61,7 @@ final class Versions
   'sensio/distribution-bundle' => 'v5.0.21@eb6266b3b472e4002538610b28a0a04bcf94891a',
   'sensio/framework-extra-bundle' => 'v3.0.29@bb907234df776b68922eb4b25bfa061683597b6a',
   'sensio/generator-bundle' => 'v3.1.7@28cbaa244bd0816fd8908b93f90380bcd7b67a65',
-  'sensiolabs/security-checker' => 'v4.1.7@d539ccba2b4dce515de04f16b7ed7ae5b9eeb434',
+  'sensiolabs/security-checker' => 'v4.1.8@dc270d5fec418cc6ac983671dba5d80ffaffb142',
   'sonata-project/admin-bundle' => '3.10.3@6527db506d3284db2a963984352b338dad33b727',
   'sonata-project/block-bundle' => '3.2.0@987b9e9bbbdaeed339c1fcf97a4645aba1e6b403',
   'sonata-project/cache' => '1.0.7@f2f6be96c270d6a2b1f26fdc1d6edcb586b60691',
@@ -81,11 +81,11 @@ final class Versions
   'symfony/swiftmailer-bundle' => 'v2.4.3@bdc1024a33cc2fbb3d02b13ae11240f0c5ed9648',
   'symfony/symfony' => 'v3.2.14@fc9f9470e81e6fb59bd826d8040b961f7ed30f94',
   'twig/extensions' => 'v1.4.1@f0bb8431c8691f5a39f1017d9a5967a082bf01ff',
-  'twig/twig' => 'v1.35.0@daa657073e55b0a78cce8fdd22682fddecc6385f',
+  'twig/twig' => 'v1.35.2@9c24f2cd39dc1906b76879e099970b7e53724601',
   'zendframework/zend-code' => '3.1.0@2899c17f83a7207f2d7f53ec2f421204d3beea27',
   'zendframework/zend-eventmanager' => '3.2.0@9d72db10ceb6e42fb92350c0cb54460da61bd79c',
-  'symfony/phpunit-bridge' => 'v3.4.4@6a65b09b666f975dd70ec2bb9e9b1a87dbb02aca',
-  'symfony/framework-standard-edition' => 'dev-master@8f98ff2eb96c815e2253b2606fab6d389b28a6c8',
+  'symfony/phpunit-bridge' => 'v3.4.6@32b06d2b0babf3216e55acfce42249321a304f03',
+  'symfony/framework-standard-edition' => 'dev-master@e7d83de0a61ddeca63556d261b2549e0090f3633',
 );
 
     private function __construct()

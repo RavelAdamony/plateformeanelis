@@ -16,10 +16,6 @@ class CRUDController extends Controller
 	const DB_PASSWORD = "root";
 	const DB_DBNAME = "panelis";
 	
-	//Identifiants du compte mailjet (clé publique & privée)
-	const MJ_PUBLIC_KEY = "4c58205eb61ff40311b3ee4f5bacb082";
-	const MJ_PRIVATE_KEY = "075cdea4b6f2938cedf47795eff2d2b9";
-	
 	private function getDBListID($id){
 		
 		//La valeur de retour. 0 si la liste n'est pas trouvée
@@ -86,8 +82,8 @@ class CRUDController extends Controller
 	private function mailjetGetAllUsers($list_id){
 		
 		//Récupération de tous les contacts de la liste Mailjet
-		$mj = new \Mailjet\Client(self::MJ_PUBLIC_KEY, self::MJ_PRIVATE_KEY);
-		$result = 0;
+		$mj = new \Mailjet\Client(getenv('MJ_PUBLIC_KEY'), getenv('MJ_PRIVATE_KEY'));
+		$result = getenv('MJ_PUBLIC_KEY');
 		$response = $mj->get(Resources::$Contact, ['contactslist' => $list_id]);
 		if ($response->success())
 			$result = $response->getData();
@@ -97,7 +93,7 @@ class CRUDController extends Controller
 	private function mailjetExportList($list_id, $users){
 	
 		//Ajout des contacts à la liste
-		$mj = new \Mailjet\Client(self::MJ_PUBLIC_KEY, self::MJ_PRIVATE_KEY);
+		$mj = new \Mailjet\Client(getenv('MJ_PUBLIC_KEY'), getenv('MJ_PRIVATE_KEY'));
 		$body = [
 			'ContactsLists' => [
 				[
@@ -117,7 +113,7 @@ class CRUDController extends Controller
 	private function mailjetDeleteList($list_id, $users){
 	
 		//Ajout des contacts à la liste
-		$mj = new \Mailjet\Client(self::MJ_PUBLIC_KEY, self::MJ_PRIVATE_KEY);
+		$mj = new \Mailjet\Client(getenv('MJ_PUBLIC_KEY'), getenv('MJ_PRIVATE_KEY'));
 		$body = [
 			'ContactsLists' => [
 				[
@@ -164,7 +160,7 @@ class CRUDController extends Controller
 			
 			//Si le vidage a échoué, la liste n'existe pas
 			else{
-				$this->addFlash('sonata_flash_error', 'List ID Mailjet non trouvée');
+				$this->addFlash('sonata_flash_error', $users);
 			}
 		}
 		

@@ -20,15 +20,6 @@ class Version2_00_007 extends AbstractMigration {
               $table = $schema->getTable('newsletter');
           }
           catch(SchemaException $e){
-<<<<<<< HEAD
-           $this->addSql('CREATE TABLE newsletter (id INT AUTO_INCREMENT NOT NULL, newsletter VARCHAR(255) NOT NULL, commentaire VARCHAR(255) NOT NULL, frequence VARCHAR(255) NOT NULL, mailjet_id INT NOT NULL DEFAULT `0`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;');
-           //on remplie la table newsletter avec les 4 newsletters précédantes
-           $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(1,"mlEmployments","Recherche d\'emploi","mensuel");');
-           $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(2,"mlEvents","Tout les événements en France","mensuel");');
-           $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(3,"mlInformations","Information à ne pas louper","annuel");');
-           $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
-           $this->addSql('INSERT INTO `newsletter` (, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
-=======
             $this->addSql('CREATE TABLE newsletter (id INT AUTO_INCREMENT NOT NULL, newsletter VARCHAR(255) NOT NULL, commentaire VARCHAR(255) NOT NULL, frequence VARCHAR(255) NOT NULL, mailjet_id INT NOT NULL DEFAULT `0`, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB;');
             //on remplie la table newsletter avec les 4 newsletters précédantes
             $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(1,"mlEmployments","Recherche d\'emploi","mensuel");');
@@ -36,7 +27,6 @@ class Version2_00_007 extends AbstractMigration {
             $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(3,"mlInformations","Information à ne pas louper","annuel");');
             $this->addSql('INSERT INTO `newsletter` (`id`, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
             $this->addSql('INSERT INTO `newsletter` (, `newsletter`, `commentaire`, `frequence`,`mailjet_id`) VALUES(4,"mlIsimaNews","Tout ce qui ce passe à l\'isima","tout les 5 mois");');
->>>>>>> f854c4c35a20f11e01998c2e15535f272b4eabed
           }
           try {
           	//on créer la table subscriber (table d'association)
