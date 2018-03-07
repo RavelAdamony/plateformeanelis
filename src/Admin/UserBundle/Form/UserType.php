@@ -126,7 +126,6 @@ class UserType extends AbstractType
                 'class'        => 'AdminMailingBundle:Newsletter',
                 'multiple'     => true,
                 'expanded'      => true,
-                }
             ))
                              
         ;
