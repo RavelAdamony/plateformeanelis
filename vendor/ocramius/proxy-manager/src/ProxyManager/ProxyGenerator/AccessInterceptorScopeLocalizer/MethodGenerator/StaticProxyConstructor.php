@@ -36,8 +36,6 @@ class StaticProxyConstructor extends MethodGenerator
      * Constructor
      *
      * @param ReflectionClass $originalClass
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
      */
     public function __construct(ReflectionClass $originalClass)
     {
@@ -58,12 +56,12 @@ class StaticProxyConstructor extends MethodGenerator
         $this->setParameter($suffix);
         $this->setReturnType($originalClass->getName());
 
-        $this->setDocBlock(
+        $this->setDocblock(
             "Constructor to setup interceptors\n\n"
             . "@param \\" . $originalClass->getName() . " \$localizedObject\n"
             . "@param \\Closure[] \$prefixInterceptors method interceptors to be used before method logic\n"
             . "@param \\Closure[] \$suffixInterceptors method interceptors to be used before method logic\n\n"
-            . '@return self'
+            . "@return self"
         );
         $this->setBody(
             'static $reflection;' . "\n\n"

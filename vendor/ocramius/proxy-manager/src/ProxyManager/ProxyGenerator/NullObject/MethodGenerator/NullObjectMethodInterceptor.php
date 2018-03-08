@@ -42,21 +42,13 @@ class NullObjectMethodInterceptor extends MethodGenerator
         /* @var $method self */
         $method = static::fromReflection($originalMethod);
 
-        if ('void' === (string) $originalMethod->getReturnType()) {
-            $method->setBody('');
-
-            return $method;
-        }
-
         if ($originalMethod->returnsReference()) {
             $reference = UniqueIdentifierGenerator::getIdentifier('ref');
 
             $method->setBody("\$$reference = null;\nreturn \$$reference;");
-
-            return $method;
+        } else {
+            $method->setBody('');
         }
-
-        $method->setBody('');
 
         return $method;
     }

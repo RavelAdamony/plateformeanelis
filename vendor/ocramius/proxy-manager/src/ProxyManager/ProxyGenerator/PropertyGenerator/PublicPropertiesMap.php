@@ -39,8 +39,6 @@ class PublicPropertiesMap extends PropertyGenerator
 
     /**
      * @param Properties $properties
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
      */
     public function __construct(Properties $properties)
     {
@@ -53,7 +51,7 @@ class PublicPropertiesMap extends PropertyGenerator
         $this->setDefaultValue($this->publicProperties);
         $this->setVisibility(self::VISIBILITY_PRIVATE);
         $this->setStatic(true);
-        $this->setDocBlock('@var bool[] map of public properties of the parent class');
+        $this->setDocblock('@var bool[] map of public properties of the parent class');
     }
 
     /**

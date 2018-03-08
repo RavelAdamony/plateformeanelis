@@ -39,8 +39,6 @@ class InterceptedMethod extends MethodGenerator
      * @param \Zend\Code\Generator\PropertyGenerator $suffixInterceptors
      *
      * @return self
-     *
-     * @throws \Zend\Code\Generator\Exception\InvalidArgumentException
      */
     public static function generateMethod(
         MethodReflection $originalMethod,
@@ -55,15 +53,16 @@ class InterceptedMethod extends MethodGenerator
             $forwardedParams[]   = ($parameter->isVariadic() ? '...' : '') . '$' . $parameter->getName();
         }
 
-        $method->setDocBlock('{@inheritDoc}');
-        $method->setBody(InterceptorGenerator::createInterceptedMethodBody(
-            '$returnValue = parent::'
-            . $originalMethod->getName() . '(' . implode(', ', $forwardedParams) . ');',
-            $method,
-            $prefixInterceptors,
-            $suffixInterceptors,
-            $originalMethod
-        ));
+        $method->setDocblock('{@inheritDoc}');
+        $method->setBody(
+            InterceptorGenerator::createInterceptedMethodBody(
+                '$returnValue = parent::'
+                . $originalMethod->getName() . '(' . implode(', ', $forwardedParams) . ');',
+                $method,
+                $prefixInterceptors,
+                $suffixInterceptors
+            )
+        );
 
         return $method;
     }

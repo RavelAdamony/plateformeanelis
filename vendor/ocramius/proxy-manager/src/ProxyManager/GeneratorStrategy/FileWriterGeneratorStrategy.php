@@ -58,8 +58,6 @@ class FileWriterGeneratorStrategy implements GeneratorStrategyInterface
      * Write generated code to disk and return the class code
      *
      * {@inheritDoc}
-     *
-     * @throws FileNotWritableException
      */
     public function generate(ClassGenerator $classGenerator) : string
     {
@@ -72,11 +70,13 @@ class FileWriterGeneratorStrategy implements GeneratorStrategyInterface
 
         try {
             $this->writeFile("<?php\n\n" . $generatedCode, $fileName);
-
-            return $generatedCode;
+        } catch (FileNotWritableException $fileNotWritable) {
+            throw $fileNotWritable;
         } finally {
             restore_error_handler();
         }
+
+        return $generatedCode;
     }
 
     /**
@@ -86,13 +86,17 @@ class FileWriterGeneratorStrategy implements GeneratorStrategyInterface
      * @param string $source
      * @param string $location
      *
+     * @return void
+     *
      * @throws FileNotWritableException
      */
-    private function writeFile(string $source, string $location) : void
+    private function writeFile(string $source, string $location)
     {
-        $tmpFileName = tempnam($location, 'temporaryProxyManagerFile');
+        $tmpFileName   = $location . '.' . uniqid('', true);
 
-        file_put_contents($tmpFileName, $source);
+        if (! file_put_contents($tmpFileName, $source)) {
+            throw FileNotWritableException::fromNonWritableLocation($tmpFileName);
+        }
 
         if (! rename($tmpFileName, $location)) {
             unlink($tmpFileName);

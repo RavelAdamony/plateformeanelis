@@ -22,7 +22,6 @@ namespace ProxyManager\ProxyGenerator\AccessInterceptorScopeLocalizer\MethodGene
 
 use ProxyManager\Generator\MagicMethodGenerator;
 use ProxyManager\ProxyGenerator\AccessInterceptorScopeLocalizer\MethodGenerator\Util\InterceptorGenerator;
-use ProxyManager\ProxyGenerator\Util\GetMethodIfExists;
 use ReflectionClass;
 use Zend\Code\Generator\PropertyGenerator;
 
@@ -48,14 +47,13 @@ class MagicClone extends MagicMethodGenerator
     ) {
         parent::__construct($originalClass, '__clone');
 
-        $parent = GetMethodIfExists::get($originalClass, '__clone');
-
-        $this->setBody(InterceptorGenerator::createInterceptedMethodBody(
-            $parent ? '$returnValue = parent::__clone();' : '$returnValue = null;',
-            $this,
-            $prefixInterceptors,
-            $suffixInterceptors,
-            $parent
-        ));
+        $this->setBody(
+            InterceptorGenerator::createInterceptedMethodBody(
+                $originalClass->hasMethod('__clone') ? '$returnValue = parent::__clone();' : '$returnValue = null;',
+                $this,
+                $prefixInterceptors,
+                $suffixInterceptors
+            )
+        );
     }
 }
