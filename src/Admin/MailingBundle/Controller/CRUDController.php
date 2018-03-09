@@ -20,72 +20,43 @@ class CRUDController extends Controller
      */
 	private function getDBListID($id){
 		
-		//La valeur de retour. 0 si la liste n'est pas trouvée
-		$list_id = 0;
-		
-		// Connexion à la BD
-		$conn = new \mysqli(getenv('MYSQL_ADDON_HOST'), getenv('MYSQL_ADDON_USER'), getenv("MYSQL_ADDON_PASSWORD"), getenv('MYSQL_ADDON_DB'));
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
-		
-		// Si la connexion a réussi
-		else{
-			
-			//Requête SQL (Récupération de la list ID de mailjet)
-			$sql = "SELECT mailjet_id FROM newsletter WHERE id=".$id."";
-			$result = $conn->query($sql);
-			
-			// Récupération de la list ID de mailjet
-			if ($result->num_rows > 0) {
-				$row = $result->fetch_assoc();
-				$list_id = $row['mailjet_id'];
-			}
-		}
+		//Récupération de la listID stockée dans la BD
+		$em = $this->getDoctrine()->getManager();
+		$newsletter = $em->getRepository('AdminMailingBundle:Newsletter')->find($id);
+		$list_id = $newsletter->getMailjetId();
 		
 		//Retourne l'ID de la liste
-		$conn->close();
 		return $list_id;	
 	}
 	
 	/**
-     * Récupère tous les utilisateurs de la BD.
+     * Récupère les coordonnées des utilisateurs d'une liste de la BD.
      *
-     * @param string $list_id  L'ID mailjet d'une liste de diffusion
+     * @param int $id  L'ID d'une liste dans la BD
      *
-     * @return array $users La liste des utilisateurs
+     * @return array $users La liste des utilisateurs (noms + email)
 	 *
      */
-	private function getDBUsers($list_id){
+	private function getDBUsers($id){
 		
 		//La valeur de retour
 		$users=array();
 		
-		// Connexion à la BD
-		$conn = new \mysqli(getenv('MYSQL_ADDON_HOST'), getenv('MYSQL_ADDON_USER'), getenv("MYSQL_ADDON_PASSWORD"), getenv('MYSQL_ADDON_DB'));
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
+		//Récupération de liste des utilisateurs de la BD
+		$em = $this->getDoctrine()->getManager();
+		$newsletter = $em->getRepository('AdminMailingBundle:Newsletter')->find($id);
+		$all_users = $newsletter->getUsers();
 		
-		else{
-			//Requête SQL (Récupération des utilisateurs de la BD)
-			$sql = "SELECT username, email FROM user WHERE id IN (SELECT user_id from subscriber WHERE newsletter_id=(SELECT id FROM newsletter WHERE mailjet_id=".$list_id."))";
-			$result = $conn->query($sql);
-			
-			// Récupération des utilisateurs à ajouter
-			if ($result->num_rows > 0) {
-				while($row = $result->fetch_assoc()) {
-					$user=array(
-						"Email" => $row['email'],
-						"Name" => $row['username']
-					);
-					array_push($users,$user);
-				}
-			}
+		//Création du tableau avec tous les noms et les adresses mail
+		foreach ($all_users->toArray() as $user){
+			$new_user = array (
+				'Email'  => $user->getEmail(),
+				'Name' => $user->getName()
+			);
+			array_push($users, $new_user);
 		}
 		
 		//Retourner la liste des utilisateurs
-		$conn->close();
 		return $users;
 	}
 	
@@ -104,20 +75,18 @@ class CRUDController extends Controller
 		$mj = new \Mailjet\Client(getenv('MJ_PUBLIC_KEY'), getenv('MJ_PRIVATE_KEY'));
 		$result = 0;
 		
-		//On récupère tous les contacts de la liste
-		$response = $mj->get(Resources::$Contact, ['contactslist' => $list_id]);
-		if ($response->success())
-			$result = $response->getData();
-			
-		//Si ça n'a pas marché, on vérifie que la liste existe
-		else{			
-			$response = $mj->get(Resources::$Listrecipient, ['contactslist' => $list_id]);
-			
-			//Si elle existe, on renvoie 1 au lieu de 0
-			if (!empty($response->getData())){
-				$result = 1;
+		//On récupère les utilisateurs de la liste Mailjet dont l'ID est celui passé en paramètre
+		$response = $mj->get(Resources::$Listrecipient, ['filters' => ['ContactsList' => $list_id]]);
+		if ($response->success()){
+			if(!empty($response->getData())){
+				$result = $mj->get(Resources::$Contact, ['contactslist' => $list_id]);
 			}
+			
+			//Si la liste n'existe pas, on renvoie 1
+			else $result = 1;
 		}
+		
+		//On retourne la liste des contacts, 0 si Mailjet n'a pas pu être contacté, 1 si la liste n'existe pas
 		return $result;   
 	}
 	
@@ -197,7 +166,7 @@ class CRUDController extends Controller
 		//Ajoute tous les utilisateurs à la liste en question
 		$list_id = self::getDBListID($id);
 		
-		//Si la liste existe
+		//Si la liste a un ID Mailjet assigné
 		if ($list_id != '0'){
 			
 			//Récupération de tous les utilisateurs de la liste Mailjet concernée
@@ -207,7 +176,7 @@ class CRUDController extends Controller
 					self::mailjetDeleteList($list_id, $users);
 				
 					// Export de la liste des contacts de la BD vers Mailjet
-					$users = self::getDBUsers($list_id);
+					$users = self::getDBUsers($id);
 					self::mailjetExportList($list_id, $users);
 						
 						//Message indiquant un succès

@@ -85,7 +85,7 @@ final class Versions
   'zendframework/zend-code' => '3.1.0@2899c17f83a7207f2d7f53ec2f421204d3beea27',
   'zendframework/zend-eventmanager' => '3.2.0@9d72db10ceb6e42fb92350c0cb54460da61bd79c',
   'symfony/phpunit-bridge' => 'v3.4.6@32b06d2b0babf3216e55acfce42249321a304f03',
-  'symfony/framework-standard-edition' => 'dev-master@63b815d89ed1112ef1183a9108f4758602c5a20a',
+  'symfony/framework-standard-edition' => 'dev-master@17915f1716a7feceb549f7a5a4f72cbbf28172d0',
 );
 
     private function __construct()
